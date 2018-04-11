@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "[name]",
+            "script": "./index.js",
+            "exec_mode": "fork",
+            "env": {
+                "NODE_ENV": "development",
+                "PORT": 6003
+            }
+        }
+    ]
+}

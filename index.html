@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <input id='room_id' type="text" placeholder="room id" text="" />
+        <button id="btn-connect">connect</button>
+    </div>
+    <div>
+        <button id="btn-emitter">发送订单变化通知</button>
+    </div>
+
+    <script>
+        var btnConnect = document.getElementById('btn-connect');
+        var btnEmitter = document.getElementById('btn-emitter');
+        var socket;
+        btnConnect.addEventListener('click', function () {
+            var roomId = document.getElementById('room_id').value;
+            socket = io.connect('http://127.0.0.1/nsp', { query: 'room_id=' + roomId });
+            socket.on('error', function (err) {
+                console.error(err);
+            })
+            socket.on('connect', function () {
+                console.log('connect success');
+            })
+            socket.on('event1', function (msg) {
+                console.log(msg);
+            })
+        })
+
+        btnEmitter.addEventListener('click', function () {
+            if (!socket) return false;
+            var roomId = document.getElementById('room_id').value;
+            socket.emit('event2', roomId)
+        })
+    </script>
+</body>
+
+</html>

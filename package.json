@@ -1,0 +1,23 @@
+{
+  "name": "socket_pipe_redis",
+  "version": "1.0.0",
+  "description": "socket pipe by redis",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env DEBUG=* node index.js"
+  },
+  "keywords": [
+    "web",
+    "socket"
+  ],
+  "author": "loft218",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.25.1",
+    "cross-env": "^4.0.0",
+    "debug": "^2.6.4",
+    "dotenv": "^4.0.0",
+    "socket.io": "^1.7.3",
+    "socket.io-redis": "^4.0.0"
+  }
+}
